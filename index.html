@@ -33,7 +33,6 @@
             overflow-x: hidden;
             animation: backgroundAnimation 15s ease infinite alternate;
             transition: background 0.3s ease;
-            box-sizing: border-box;
         }
 
         @keyframes backgroundAnimation {
@@ -45,7 +44,7 @@
         .container {
             width: 95%;
             max-width: 450px;
-            margin: 20px auto;
+            margin: 0 auto;
             padding: 15px;
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
@@ -74,7 +73,7 @@
         .color-selection {
             position: absolute;
             top: 10px;
-            right: 10px; /* Moved to right for better balance */
+            left: 10px;
             display: flex;
             gap: 8px;
         }
@@ -229,33 +228,6 @@
             font-size: 1.15em;
         }
 
-        .social-links {
-            display: flex;
-            gap: 10px;
-        }
-
-        .social-links a {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .social-links a:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-
-        .social-links a i {
-            font-size: 1.2em;
-        }
-
         .copy-all-btn {
             background: var(--primary-color);
             color: white;
@@ -322,8 +294,8 @@
         @media (max-width: 480px) {
             .container {
                 padding: 12px;
-                width: 90%; /* Slightly reduced width for better centering */
-                margin: 20px auto; /* Ensure consistent margin */
+                width: 95%;
+                margin: 0 auto;
             }
 
             .hero-section h2 {
@@ -336,8 +308,7 @@
 
             .color-selection {
                 top: 8px;
-                right: 8px; /* Adjusted to right */
-                left: auto; /* Remove left positioning */
+                left: 8px;
             }
 
             .color-circle {
@@ -379,20 +350,6 @@
 
             .result-item span {
                 font-size: 1.05em;
-            }
-
-            .social-links {
-                justify-content: flex-start;
-                width: 100%;
-            }
-
-            .social-links a {
-                padding: 6px 10px;
-                font-size: 0.9em;
-            }
-
-            .social-links a i {
-                font-size: 1em;
             }
 
             .copy-all-btn {
@@ -551,31 +508,36 @@
                         { key: 'international_format', label: 'আন্তর্জাতিক ফরম্যাট', icon: 'fas fa-globe' },
                         { key: 'carrier', label: 'ক্যারিয়ার', icon: 'fas fa-sim-card' },
                         { key: 'location', label: 'অবস্থান', icon: 'fas fa-map-marker-alt' },
+                        
                     ];
 
                     fields.forEach(field => {
                         if (data[field.key]) {
-                            let content = data[field.key];
-                            if (field.key === 'number') {
-                                const internationalNumber = data['international_format'] || `+88${data[field.key]}`;
-                                content = `
-                                    <span>${data[field.key]}</span>
-                                    <div class="social-links">
-                                        <a href="https://wa.me/${internationalNumber}" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                                        <a href="https://t.me/${internationalNumber}" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                                        <a href="imo://msg/${internationalNumber}" target="_blank"><i class="fas fa-comment"></i> Imo</a>
-                                    </div>
-                                `;
-                            }
                             html += `
                                 <div class="result-item">
                                     <strong><i class="${field.icon}"></i> ${field.label}:</strong> 
-                                    ${content}
+                                    <span>${data[field.key]}</span>
                                 </div>
                             `;
                             copyText += `${field.label}: ${data[field.key]}\n`;
                         }
                     });
+
+                    // Add social apps links if international_format is available (assuming always show if number exists)
+                    if (data.international_format) {
+                        const cleanNumber = data.international_format.replace('+', '');
+                        html += `
+                            <div class="result-item">
+                                <strong><i class="fas fa-share-alt"></i> সামাজিক অ্যাপ:</strong>
+                                <span>
+                                    <a href="https://wa.me/${cleanNumber}" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color: #25D366; font-size: 1.5em; margin: 0 10px;"></i></a>
+                                    <a href="tg://resolve?phone=${data.international_format}" target="_blank" title="Telegram"><i class="fab fa-telegram-plane" style="color: #0088cc; font-size: 1.5em; margin: 0 10px;"></i></a>
+                                    <a href="imo://msg?to=${cleanNumber}" target="_blank" title="Imo"><i class="fas fa-comment-dots" style="color: #00b140; font-size: 1.5em; margin: 0 10px;"></i></a>
+                                </span>
+                            </div>
+                        `;
+                        copyText += `সামাজিক অ্যাপ: WhatsApp, Telegram, Imo\n`;
+                    }
 
                     if (html === '') {
                         showError('এই নাম্বারের জন্য কোনো তথ্য পাওয়া যায়নি।');
