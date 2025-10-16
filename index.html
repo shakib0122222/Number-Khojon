@@ -38,22 +38,21 @@
         @keyframes backgroundAnimation {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
-        }
-
         /* Main Content Container */
-        .container {
-            width: 95%;
-            max-width: 450px;
-            margin: 0 auto;
-            padding: 15px;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            box-sizing: border-box;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-        }
+.container {
+    width: 95%;
+    max-width: 450px;
+    margin: 0 auto; /* Keep centered */
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    left: 0; /* Ensure no offset that could cause asymmetry */
+}
 
         /* Hero Section */
         .hero-section h2 {
