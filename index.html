@@ -11,7 +11,7 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #a7f7d0 0%, #bbfbee 100%); /* Green gradient */
+            background: linear-gradient(135deg, #a7f7d0 0%, #bbfbee 100%);
             color: #333;
             display: flex;
             flex-direction: column;
@@ -35,9 +35,9 @@
 
         /* Main Content Container */
         .container {
-            width: 90%;
+            width: 95%;
             max-width: 450px;
-            padding: 20px;
+            padding: 15px;
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -63,7 +63,7 @@
         }
 
         .hero-section p {
-            font-size: 1em;
+            font-size: 0.95em;
             color: #555;
             line-height: 1.6;
             margin-bottom: 20px;
@@ -76,8 +76,8 @@
         /* Theme Toggle Button */
         .theme-toggle {
             position: absolute;
-            top: 15px;
-            right: 15px;
+            top: 10px;
+            right: 10px;
             background: none;
             border: none;
             cursor: pointer;
@@ -98,10 +98,10 @@
         }
 
         .search-form input[type="text"] {
-            padding: 14px 18px;
+            padding: 12px 16px;
             border: 1px solid #86efac;
             border-radius: 10px;
-            font-size: 1em;
+            font-size: 0.95em;
             width: 100%;
             box-sizing: border-box;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -122,17 +122,17 @@
         .search-form button {
             background-color: #22c55e;
             color: white;
-            padding: 14px 20px;
+            padding: 12px 18px;
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: bold;
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
         }
 
@@ -143,7 +143,7 @@
 
         .search-form button:hover {
             background-color: #16a34a;
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
         }
 
@@ -153,7 +153,7 @@
         }
 
         .search-form button i {
-            font-size: 1.2em;
+            font-size: 1.1em;
         }
 
         /* Loading Spinner */
@@ -161,8 +161,8 @@
             border: 4px solid rgba(255, 255, 255, 0.3);
             border-left-color: #fff;
             border-radius: 50%;
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             animation: spin 1s linear infinite;
             display: none;
         }
@@ -173,20 +173,30 @@
 
         /* Results Section */
         #resultsSection {
-            margin-top: 20px;
-            border-top: 1px dashed #e0e0e0;
-            padding-top: 20px;
+            margin-top: 15px;
+            padding-top: 15px;
             animation: fadeIn 0.6s ease-out;
         }
 
-        body.dark-mode #resultsSection {
-            border-top: 1px dashed #475569;
+        #resultsBox {
+            border: 1px solid #86efac;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #f0fdf4;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        body.dark-mode #resultsBox {
+            border-color: #4ade80;
+            background-color: #1e293b;
         }
 
         #resultsSection h3 {
-            font-size: 1.5em;
+            font-size: 1.4em;
             color: #2c3e50;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         body.dark-mode #resultsSection h3 {
@@ -200,21 +210,11 @@
         }
 
         .result-item {
-            background-color: #dcfce7;
-            padding: 12px 15px;
-            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            font-size: 1em;
-            border: 1px solid #bbfbee;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            position: relative;
-        }
-
-        body.dark-mode .result-item {
-            background-color: #1e293b;
-            border-color: #334155;
+            font-size: 0.95em;
+            padding: 8px 0;
         }
 
         .result-item strong {
@@ -240,46 +240,37 @@
             color: #d1d5db;
         }
 
-        .copy-btn {
-            background: none;
+        .copy-all-btn {
+            background: #22c55e;
+            color: white;
             border: none;
-            color: #666;
+            padding: 10px 15px;
+            border-radius: 8px;
             cursor: pointer;
             font-size: 1em;
-            margin-left: 10px;
-            padding: 8px;
-            border-radius: 5px;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        body.dark-mode .copy-btn {
-            color: #9ca3af;
+        body.dark-mode .copy-all-btn {
+            background: #16a34a;
         }
 
-        .copy-btn:hover {
-            background-color: #d1fae5;
-            color: #22c55e;
+        .copy-all-btn:hover {
+            background-color: #16a34a;
+            transform: translateY(-2px);
         }
 
-        body.dark-mode .copy-btn:hover {
-            background-color: #334155;
-            color: #4ade80;
+        .copy-all-btn.copied {
+            background-color: #16a34a;
+            color: white;
         }
 
-        .copy-btn.copied {
-            color: #22c55e;
-        }
-
-        body.dark-mode .copy-btn.copied {
-            color: #4ade80;
-        }
-
-        .copy-btn.copied i {
-            color: #22c55e;
-        }
-
-        body.dark-mode .copy-btn.copied i {
-            color: #4ade80;
+        .copy-all-btn.copied i {
+            color: white;
         }
 
         /* Error Message */
@@ -288,7 +279,7 @@
             background-color: #fee2e2;
             padding: 12px;
             border-radius: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
             font-weight: bold;
             display: none;
             text-align: center;
@@ -325,57 +316,62 @@
         /* Media Queries for Mobile Friendliness */
         @media (max-width: 480px) {
             .container {
-                padding: 15px;
+                padding: 12px;
                 width: 95%;
             }
 
             .hero-section h2 {
-                font-size: 1.6em;
+                font-size: 1.5em;
             }
 
             .hero-section p {
-                font-size: 0.9em;
+                font-size: 0.85em;
             }
 
             .theme-toggle {
-                top: 10px;
-                right: 10px;
+                top: 8px;
+                right: 8px;
                 font-size: 1.2em;
             }
 
             .search-form input[type="text"] {
-                padding: 12px 16px;
-                font-size: 0.95em;
+                padding: 10px 14px;
+                font-size: 0.9em;
             }
 
             .search-form button {
-                padding: 12px 18px;
-                font-size: 1.1em;
+                padding: 10px 16px;
+                font-size: 1em;
+            }
+
+            #resultsSection h3 {
+                font-size: 1.3em;
+            }
+
+            #resultsBox {
+                padding: 10px;
+                max-height: 250px;
             }
 
             .result-item {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 8px;
-                padding: 10px 12px;
+                gap: 6px;
+                padding: 6px 0;
             }
 
             .result-item strong {
                 min-width: auto;
-                font-size: 0.95em;
+                font-size: 0.9em;
             }
 
             .result-item span {
-                font-size: 0.95em;
+                font-size: 0.9em;
             }
 
-            .copy-btn {
-                margin-left: 0;
-                padding: 6px;
-            }
-
-            #resultsSection h3 {
-                font-size: 1.4em;
+            .copy-all-btn {
+                padding: 8px 12px;
+                font-size: 0.9em;
             }
         }
     </style>
@@ -400,8 +396,13 @@
 
         <div id="resultsSection" style="display:none;">
             <h3>অনুসন্ধান ফলাফল</h3>
-            <div id="resultsContent">
-                <!-- API থেকে প্রাপ্ত ফলাফল এখানে দেখানো হবে -->
+            <button class="copy-all-btn" id="copyAllBtn" style="display:none;">
+                সব কপি করুন <i class="fas fa-copy"></i>
+            </button>
+            <div id="resultsBox">
+                <div id="resultsContent">
+                    <!-- API থেকে প্রাপ্ত ফলাফল এখানে দেখানো হবে -->
+                </div>
             </div>
         </div>
     </div>
@@ -421,6 +422,7 @@
         const errorMessage = document.getElementById('errorMessage');
         const resultsSection = document.getElementById('resultsSection');
         const resultsContent = document.getElementById('resultsContent');
+        const copyAllBtn = document.getElementById('copyAllBtn');
         const themeToggle = document.getElementById('themeToggle');
 
         // Theme Toggle Functionality
@@ -477,49 +479,42 @@
             setLoading(true);
 
             try {
-                // Using GET with number parameter as per provided API
                 const response = await fetch(`${API_URL}?key=${encodeURIComponent(API_KEY)}&number=${encodeURIComponent(number)}`);
                 const data = await response.json();
 
-                console.log('API Response:', data); // Debug API response
+                console.log('API Response:', data);
 
                 if (data.success) {
                     let html = '';
-                    // Generic field handling to accommodate any API response structure
-                    for (const [key, value] of Object.entries(data)) {
-                        if (key !== 'success' && value) {
-                            const label = {
-                                'name': 'নাম',
-                                'number': 'নাম্বার',
-                                'international_format': 'আন্তর্জাতিক ফরম্যাট',
-                                'carrier': 'ক্যারিয়ার',
-                                'location': 'অবস্থান',
-                                'developer': 'ডেভেলপার'
-                            }[key] || key.charAt(0).toUpperCase() + key.slice(1);
-                            const icon = {
-                                'name': 'fas fa-user',
-                                'number': 'fas fa-phone',
-                                'international_format': 'fas fa-globe',
-                                'carrier': 'fas fa-sim-card',
-                                'location': 'fas fa-map-marker-alt',
-                                'developer': 'fas fa-code'
-                            }[key] || 'fas fa-info-circle';
+                    let copyText = '';
+                    const fields = [
+                        { key: 'name', label: 'নাম', icon: 'fas fa-user' },
+                        { key: 'number', label: 'নাম্বার', icon: 'fas fa-phone' },
+                        { key: 'international_format', label: 'আন্তর্জাতিক ফরম্যাট', icon: 'fas fa-globe' },
+                        { key: 'carrier', label: 'ক্যারিয়ার', icon: 'fas fa-sim-card' },
+                        { key: 'location', label: 'অবস্থান', icon: 'fas fa-map-marker-alt' },
+                        { key: 'developer', label: 'ডেভেলপার', icon: 'fas fa-code' }
+                    ];
+
+                    fields.forEach(field => {
+                        if (data[field.key]) {
                             html += `
                                 <div class="result-item">
-                                    <strong><i class="${icon}"></i> ${label}:</strong> 
-                                    <span id="copy-${key}">${value}</span>
-                                    <button class="copy-btn" data-target="copy-${key}" title="কপি করুন"><i class="fas fa-copy"></i></button>
+                                    <strong><i class="${field.icon}"></i> ${field.label}:</strong> 
+                                    <span>${data[field.key]}</span>
                                 </div>
                             `;
+                            copyText += `${field.label}: ${data[field.key]}\n`;
                         }
-                    }
+                    });
 
                     if (html === '') {
                         showError('এই নাম্বারের জন্য কোনো তথ্য পাওয়া যায়নি।');
                     } else {
                         resultsContent.innerHTML = html;
                         resultsSection.style.display = 'block';
-                        attachCopyListeners();
+                        copyAllBtn.style.display = 'block';
+                        copyAllBtn.dataset.copyText = copyText;
                     }
                 } else {
                     showError(data.error || data.message || 'তথ্য খুঁজতে ব্যর্থ হয়েছে।');
@@ -532,28 +527,24 @@
             }
         });
 
-        // Function to attach copy event listeners
-        function attachCopyListeners() {
-            document.querySelectorAll('.copy-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    const targetId = this.dataset.target;
-                    const textToCopy = document.getElementById(targetId).textContent;
-                    
-                    navigator.clipboard.writeText(textToCopy).then(() => {
-                        const originalIconHtml = this.innerHTML;
-                        this.innerHTML = '<i class="fas fa-check"></i>';
-                        this.classList.add('copied');
-                        setTimeout(() => {
-                            this.innerHTML = originalIconHtml;
-                            this.classList.remove('copied');
-                        }, 2000);
-                    }).catch(err => {
-                        console.error('Failed to copy text: ', err);
-                        alert('কপি করতে ব্যর্থ হয়েছে। অনুগ্রহ করে নিজে কপি করুন।');
-                    });
+        // Copy All Button Functionality
+        copyAllBtn.addEventListener('click', function() {
+            const textToCopy = this.dataset.copyText;
+            if (textToCopy) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    const originalContent = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-check"></i> সব কপি করা হয়েছে';
+                    this.classList.add('copied');
+                    setTimeout(() => {
+                        this.innerHTML = originalContent;
+                        this.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy text: ', err);
+                    alert('কপি করতে ব্যর্থ হয়েছে। অনুগ্রহ করে নিজে কপি করুন।');
                 });
-            });
-        }
+            }
+        });
     </script>
 </body>
 </html>
