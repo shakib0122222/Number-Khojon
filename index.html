@@ -18,6 +18,10 @@
             --gradient-end: #bbfbee;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -34,7 +38,7 @@
             animation: backgroundAnimation 15s ease infinite alternate;
             transition: background 0.3s ease;
             width: 100%;
-            box-sizing: border-box;
+            padding: 10px;
         }
 
         @keyframes backgroundAnimation {
@@ -44,19 +48,16 @@
 
         /* Main Content Container */
         .container {
-            width: 95%;
+            width: 100%;
             max-width: 450px;
             margin: 0 auto;
             padding: 15px;
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            box-sizing: border-box;
             text-align: center;
             position: relative;
             z-index: 10;
-            /* নিচের লাইনটি যোগ করা হয়েছে */
-            min-width: 320px;
         }
 
         /* Hero Section */
@@ -323,12 +324,14 @@
 
         /* Media Queries for Mobile Friendliness */
         @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+            
             .container {
                 padding: 12px;
-                width: 95%;
+                width: 100%;
                 margin: 0 auto;
-                /* নিচের লাইনটি যোগ করা হয়েছে */
-                min-width: unset;
             }
 
             .hero-section h2 {
@@ -407,8 +410,12 @@
 
         /* খুব ছোট স্ক্রিনের জন্য অতিরিক্ত মিডিয়া কোয়েরি */
         @media (max-width: 320px) {
+            body {
+                padding: 5px;
+            }
+            
             .container {
-                width: 98%;
+                width: 100%;
                 padding: 10px;
             }
             
