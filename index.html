@@ -38,21 +38,22 @@
         @keyframes backgroundAnimation {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
+        }
+
         /* Main Content Container */
- {
-    width: 95%;
-    max-width: 450px;
-    margin: 0 auto; /* Keep centered */
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
-    text-align: center;
-    position: relative;
-    z-index: 10;
-    left: 0; /* Ensure no offset that could cause asymmetry */
-}
+        .container {
+            width: 95%;
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
 
         /* Hero Section */
         .hero-section h2 {
@@ -320,9 +321,8 @@
         @media (max-width: 480px) {
             .container {
                 padding: 12px;
-                width: 100%;
-                margin: 0;
-                flex-grow: 1;
+                width: 95%;
+                margin: 0 auto;
             }
 
             .hero-section h2 {
@@ -522,16 +522,9 @@
         // Event listener for form submission
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
-            let number = phoneNumberInput.value.trim();
+            const number = phoneNumberInput.value.trim();
 
             hideError();
-
-            // Normalize the number
-            if (number.startsWith('+880')) {
-                number = '0' + number.substring(4);
-            } else if (number.startsWith('+88')) {
-                number = '0' + number.substring(3);
-            }
 
             // Validate number format: starts with 01 and exactly 11 digits
             if (!number.match(/^01\d{9}$/)) {
